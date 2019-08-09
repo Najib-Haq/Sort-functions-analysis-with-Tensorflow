@@ -1,0 +1,11 @@
+Sorted data :
+Training : 0.001110807
+Testing : 0.0029284629742610726
+
+Random data :
+Training : 0.0006413786
+Testing : 0.0018074660724461357
+
+Reverse data :
+Training : 0.00021380867
+Testing : 0.0027150756969088153

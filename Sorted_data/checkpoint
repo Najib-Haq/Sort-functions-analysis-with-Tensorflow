@@ -1,0 +1,2 @@
+model_checkpoint_path: "Sorted_data.ckpt"
+all_model_checkpoint_paths: "Sorted_data.ckpt"
