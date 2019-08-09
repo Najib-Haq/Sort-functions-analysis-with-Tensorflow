@@ -50,16 +50,45 @@ Here sorted_data and reverse_data shows a 2nd order curve whereas random_data sh
 <br><br>
 <img src="Images/Heap sort.jpg" width="700"> <br>
 Like Merge sort, all three cases show a linear logarithmic characteristic. This is consistent with Heap sort's time complexity of O(nlogn) for all three cases. Like Merge sort, the data used for training seems to fluctuate a lot. Here random_data < reverse_data < sorted_data is observed even though the difference is quite negligible. But this might be because of the fluctuating training data.
+<br>
+<br>
+<br>
+### Individual Case Performance
+<b>Training data for Sorted case</b>
+<img src="Images/Sorted data(Training data).jpg" width="700"> <br>
+<br>
+<b>Model data for Sorted case</b>
+<img src="Images/Sorted data(Data from model).jpg" width="700"> <br>
+From the plots one can assume that the model data produces an accurate depiction of the training data. Here, quick sort takes the longest time whereas insertion sort takes the least time.
+<br>
+<br>
+<b>Training data for Random case</b>
+<img src="Images/Random data(Training data).jpg" width="700"> <br>
+<br>
+<b>Model data for Random case</b>
+<img src="Images/Random data(Data from model).jpg" width="700"> <br>
+Here too the model data seems to be close to the training data. Here, bubble sort takes the longest time whereas quick sort seems to take the least.
+<br>
+<br>
+<b>Training data for Reverse case</b>
+<img src="Images/Reverse data(Training data).jpg" width="700"> <br>
+<br>
+<b>Model data for Reverse case</b>
+<img src="Images/Reverse data(Data from model).jpg" width="700"> <br>
+Here again the model data is close to the training data. Again, bubble sort takes the most time. Heap sort and Merge sort seems to take about the same time, though merge sort seems to win narrowly.
+<br>
+<br>
+<br>
+### Accuracy
+Here accuracy was measured by comparing the sorting function which gave the least time from the models and actual data. The accuracy was 60% meaning the model was correct only 60 out of a 100 times. Upon inspection, this low accuracy was actually contained in the area where 10 <= array size <= 400. When the model was evaluated for 400 <= array size <= 4000, the accuracy rose to 87%. And in this scenario the inaccuracies were on the reverse_data case where heap sort and merge sort values were nearly identical. <br>
+The low accuracy due to 10 <= array size <= 400 stems from the fact that here, polynomial regression was used on input data which was scaled to values between 0 to 1. That is why the values observed when input was very close to 0 actually gave negative output which is theoretically impossible, and that attributed to the low accuracy. Thus, the model is considered correct when input data is in the boundary 400 <= array size <= 4000.
+### Recommended Sort Functions
+<img src="Images/data.jpg" width="700"> <br>
+The upper graph was generated from model data. This shows the recommended sorting algorithm for sorted random and reverse cases when input size varies from 400 to 4000. This model recommends to use insertion sort for any input size when the given data is already sorted. When the data is random, the model recommends to use quick sort for any input size.  When the data is reverse sorted, the model recommends to use heap sort when input size is < 1250. After that, the model recommends merge sort.<br>
 
+# Conclusion
+The file ![accuracy_validation](accuracy_validation.py) contains functions to calculate accuracy. Also this file was designed for the purpose of giving individual input and observing the value calculated from the machine and the value from the model, to make comparisons easier. Also it has a "Recommendation" option which will give the user the sorting function the model and the user's machine recommends based on the input. <br>
+As the data in this project is machine dependent, the same model won't work for hardware with different specifications. But the user can train the model himself through the given files.
 
-
-
-
-
-
-
-
-
-
-
-
+### Future Plans
+Use different Tensorflow models to calculate output, including classification algorithms and RNNs with different optimizers.
